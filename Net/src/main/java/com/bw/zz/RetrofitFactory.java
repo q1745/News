@@ -6,6 +6,7 @@ import android.util.Log;
 import com.bw.zz.api.TokenApi;
 import com.bw.zz.common.Config;
 import com.bw.zz.protocol.TokenRespEntity;
+import com.bw.zz.retrofit.CustomGsonConverterFactory;
 import com.bw.zz.retrofit.LiveDataCallAdapterFactory;
 
 import java.io.IOException;
@@ -59,8 +60,9 @@ public class RetrofitFactory {
     public Retrofit createRetrofit() {
         return new Retrofit.Builder()
                 .baseUrl("")
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(CustomGsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addCallAdapterFactory(LiveDataCallAdapterFactory.create())
                 .client(createHttpClient())
                 .build();
