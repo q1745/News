@@ -7,6 +7,7 @@ import androidx.lifecycle.*
  *   @Date:2021/8/17
  *   @Email:3536815334@qq.com
  */
+
 abstract class BaseViewModel<Repo : BaseRepository>()  : ViewModel() , LifecycleObserver {
 
     private lateinit var owner: LifecycleOwner
