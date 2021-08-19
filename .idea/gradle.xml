@@ -15,6 +15,9 @@
             <option value="$PROJECT_DIR$/Net" />
             <option value="$PROJECT_DIR$/VideoModel" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/homepage" />
+            <option value="$PROJECT_DIR$/login" />
+            <option value="$PROJECT_DIR$/register" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -7,3 +7,6 @@ include ':MVVMCore'
 //>>>>>>> f7d8ab6e90c6c7929dc7a159b92ef9818e56ae88
 include ':Common'
 include ':VideoModel'
+include ':register'
+include ':login'
+include ':homepage'
