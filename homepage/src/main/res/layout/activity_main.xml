@@ -1,64 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
 
-    <com.shuke.homepage.customview.FluidView
-        android:layout_width="300dp"
-        android:layout_height="200dp">
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <com.shuke.homepage.customview.TextItem
-            app:text="这是志强傻逼"
-            app:bgColor="#DFDFDF"
+            app:bgColor="#BCBCBC"
             app:isHaveX="true"
+            app:text="志强大傻逼"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <com.shuke.homepage.customview.TextItem
-            app:text="这是志强傻逼"
-            app:bgColor="#DFDFDF"
-            app:isHaveX="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <com.shuke.homepage.customview.TextItem
-            app:text="这是志强傻逼"
-            app:bgColor="#DFDFDF"
-            app:isHaveX="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <com.shuke.homepage.customview.TextItem
-            app:text="光头是"
-            app:bgColor="#DFDFDF"
-            app:isHaveX="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <com.shuke.homepage.customview.TextItem
-            app:text="傻逼"
-            app:bgColor="#DFDFDF"
-            app:isHaveX="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <com.shuke.homepage.customview.TextItem
-            app:text="我爱你"
-            app:bgColor="#DFDFDF"
-            app:isHaveX="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <com.shuke.homepage.customview.TextItem
-            app:text="纯纯大傻逼"
-            app:bgColor="#DFDFDF"
-            app:isHaveX="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <com.shuke.homepage.customview.TextItem
-            app:text="啊"
-            app:bgColor="#DFDFDF"
-            app:isHaveX="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </com.shuke.homepage.customview.FluidView>
-
-</LinearLayout>
+    </LinearLayout>
+</layout>
