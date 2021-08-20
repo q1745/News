@@ -19,13 +19,21 @@ abstract class BaseViewModel<Repo : BaseRepository>()  : ViewModel() , Lifecycle
     protected lateinit var repo: Repo
 
     init {
+<<<<<<< HEAD
         createRepository()
+=======
+        repo = createRepository()
+>>>>>>> 67d1e74f900b6073a9bfc53b1e195d8f6a5ee3de
     }
 
     /**
      * 创建并初始化Repository
      */
+<<<<<<< HEAD
     abstract fun createRepository()
+=======
+    abstract fun createRepository() : Repo
+>>>>>>> 67d1e74f900b6073a9bfc53b1e195d8f6a5ee3de
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     fun uiConnection(){

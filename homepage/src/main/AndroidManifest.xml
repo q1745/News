@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.News">
-        <activity android:name=".CustomActivity">
+        <activity android:name=".CustomActivity"/>
+        <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".search.view.SearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
