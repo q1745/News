@@ -78,7 +78,7 @@
             android:layout_width="350dp"
             android:layout_height="200dp">
             <com.shuke.homepage.customview.TextItem
-                shuke:text="志强"
+                shuke:text="强"
                 shuke:isHaveX="true"
                 shuke:bgColor="#EDEDED"
                 android:layout_width="wrap_content"
