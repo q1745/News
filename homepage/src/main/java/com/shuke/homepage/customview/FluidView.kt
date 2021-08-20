@@ -23,10 +23,14 @@ class FluidView : ViewGroup{
     var maxHeight : Int = 0
 
 
-    constructor(context: Context?) : super(context){ init() }
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs){init()}
+    constructor(context: Context?) : super(context)
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
 
-    private fun init() {
+    /**
+     * 添加子布局
+     */
+    fun addChildView(view:View){
+        addView(view)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

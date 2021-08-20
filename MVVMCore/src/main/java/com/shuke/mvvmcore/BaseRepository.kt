@@ -40,10 +40,10 @@ abstract class BaseRepository {
                 var name : String = ""
                 //版本适配，获取字段类型名称
                 if (Build.VERSION.SDK_INT >= 28){
-                    name = field.type.typeName
+                    name = field.genericType.typeName
                 }
                 else{
-                    name = field.name
+                    name = field.type.name
                 }
                 //通过全类型名称获取当前类型
                 val type = Class.forName(name)
