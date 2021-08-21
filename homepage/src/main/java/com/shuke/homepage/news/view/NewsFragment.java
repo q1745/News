@@ -1,10 +1,17 @@
 package com.shuke.homepage.news.view;
 
+import android.view.LayoutInflater;
+import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.shuke.homepage.BR;
 import com.shuke.homepage.R;
 import com.shuke.homepage.databinding.MyNewsFragment;
 import com.shuke.homepage.news.viewmodel.NewsViewModel;
-import com.shuke.mvvmcore.BaseViewModel;
 import com.shuke.mvvmcore.view.MVVMFragment;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
@@ -15,16 +22,17 @@ import java.util.Map;
  * @Date 2021/8/20 20:02
  * @Version 1.0
  */
-public class NewsFragment extends MVVMFragment {
+public class NewsFragment extends MVVMFragment<MyNewsFragment, NewsViewModel> {
 
     @Override
     public Map<Integer, Object> initVarMap(Map vars) {
-        return null;
+        vars.put(BR.mine, this);
+        return vars;
     }
 
     @Override
-    public BaseViewModel<?> createViewModel() {
-        return null;
+    public NewsViewModel createViewModel() {
+        return new NewsViewModel();
     }
 
     @Override
@@ -41,4 +49,6 @@ public class NewsFragment extends MVVMFragment {
     public int getLayoutId() {
         return R.layout.fragment_news;
     }
+
+
 }

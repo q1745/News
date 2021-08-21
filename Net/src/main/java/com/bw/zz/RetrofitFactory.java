@@ -98,6 +98,7 @@ public class RetrofitFactory {
                 Request request = chain.request();
                 //获取本地Token
                 String localToken = mToken;
+
                 if (!TextUtils.isEmpty(localToken)) {
                     return resetRequest(request,localToken,chain);
                 }
