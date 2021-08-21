@@ -1,6 +1,7 @@
 package com.shuke.mvvmcore.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -63,4 +64,11 @@ abstract class MVVMActivity<V : ViewDataBinding,VM : BaseViewModel<*>> : AppComp
      * 获取布局Id
      */
     abstract fun getLayoutId(): Int
+
+    /**
+     * 根据Id获取控件
+     */
+    fun FindView(id:Int):View{
+        return findViewById(id)
+    }
 }
