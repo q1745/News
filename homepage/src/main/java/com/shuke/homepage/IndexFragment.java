@@ -33,7 +33,7 @@ public class IndexFragment extends Fragment {
         tab = inflate.findViewById(R.id.index_tab);
         vp = inflate.findViewById(R.id.index_vp);
 
-        fragments.add(new NewsFragment());
+//        fragments.add(new NewsFragment());
 
         for (int i = 0; i < CustomActivity.list.size(); i++) {
             tab.addTab(tab.newTab().setText(CustomActivity.list.get(i)));
@@ -44,7 +44,7 @@ public class IndexFragment extends Fragment {
         tab.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                vp.setCurrentItem(0);
+//                vp.setCurrentItem(0);
             }
 
             @Override
