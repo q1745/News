@@ -34,8 +34,8 @@ public class RetrofitFactory {
     private volatile static RetrofitFactory myRetrofit = null;
     private Retrofit retrofit;
 
+    public RetrofitFactory() {
 
-    public  RetrofitFactory() {
         retrofit = createRetrofit();
     }
 
@@ -43,7 +43,9 @@ public class RetrofitFactory {
      * 双重锁成就单例
      * @return
      */
+
     public synchronized static RetrofitFactory getMyRetrofit() {
+
         if (myRetrofit == null) {
             synchronized (RetrofitFactory.class) {
                 if (myRetrofit == null) {

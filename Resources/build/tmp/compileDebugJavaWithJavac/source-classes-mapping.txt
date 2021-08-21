@@ -1,0 +1,2 @@
+com/shuke/resources/BuildConfig.java
+ com.shuke.resources.BuildConfig

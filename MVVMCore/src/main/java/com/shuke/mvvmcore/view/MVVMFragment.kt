@@ -24,6 +24,7 @@ abstract class MVVMFragment<V : ViewDataBinding,VM : BaseViewModel<*>> : Fragmen
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = DataBindingUtil.inflate(inflater,getLayoutId(),container,false)
         return binding.root
     }
@@ -33,13 +34,13 @@ abstract class MVVMFragment<V : ViewDataBinding,VM : BaseViewModel<*>> : Fragmen
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = createViewModel()
-
         vars = initVarMap(vars)
         setVars(binding,vars)
-        viewModel = createViewModel()
 
         loadData()
         initEvent()
+
+
     }
 
 
@@ -79,4 +80,11 @@ abstract class MVVMFragment<V : ViewDataBinding,VM : BaseViewModel<*>> : Fragmen
      * 获取布局Id
      */
     abstract fun getLayoutId(): Int
+
+    /**
+     * 通过Id获取控件
+     */
+    fun <T : View?> findView(id:Int):T{
+        return binding.root.findViewById<T>(id)
+    }
 }
