@@ -5,6 +5,8 @@ plugins {
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+
+def dependen = rootProject.ext.dependenciesConfig
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -29,11 +31,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     dataBinding {
         enabled = true
     }
-
 }
 
 dependencies {
@@ -54,6 +54,17 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation dependen.rxjava
+    implementation dependen.rxandroid
+    implementation dependen.okhttp
+    implementation dependen.okhttplog
+    implementation dependen.retrofit
+    implementation dependen.retrofitgson
+    implementation dependen.retrofitrxjava
+    implementation dependen.glide
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    implementation dependen.BaseRecyclerViewAdapterHelper
 }
 repositories {
     mavenCentral()

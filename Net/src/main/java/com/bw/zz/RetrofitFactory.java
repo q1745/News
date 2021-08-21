@@ -61,14 +61,15 @@ public class RetrofitFactory {
      * @return
      */
     public Retrofit createRetrofit() {
-        return new Retrofit.Builder()
-                .baseUrl("")
+         Retrofit retro = new Retrofit.Builder()
+                .baseUrl("http://39.98.153.96:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addConverterFactory(CustomGsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addCallAdapterFactory(LiveDataCallAdapterFactory.create())
                 .client(createHttpClient())
                 .build();
+        return retro;
     }
 
     /**
@@ -99,6 +100,7 @@ public class RetrofitFactory {
                 Request request = chain.request();
                 //获取本地Token
                 String localToken = mToken;
+
                 if (!TextUtils.isEmpty(localToken)) {
                     return resetRequest(request,localToken,chain);
                 }

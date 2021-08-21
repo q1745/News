@@ -68,10 +68,9 @@ public class CustomHobbyType extends ViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        //        //循环遍历每个子类
-        left=0;//子控件距离左边的距离
-        top=0;//子控件距离顶部的距离
-        curlen=0;//当前横排的长度,判断每个横行的一个长度,不允许超出父布局的长度
+        left=0; //子控件外左边距
+        top=0; //子控件外上边距
+        curlen=0; //用于接收所有子控件宽度
         for (int i = 0; i < getChildCount(); i++) {
             View childAt = getChildAt(i);
             measureChild(childAt,widthMeasureSpec,heightMeasureSpec);
