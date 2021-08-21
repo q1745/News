@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.shuke.homepage.adapter.MainVpAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 
