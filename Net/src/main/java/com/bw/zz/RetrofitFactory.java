@@ -31,18 +31,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitFactory {
 
-<<<<<<< HEAD
     private volatile static RetrofitFactory myRetrofit = null;
     private Retrofit retrofit;
 
-
-    public  RetrofitFactory() {
-=======
-    private volatile RetrofitFactory myRetrofit = null;
-    private Retrofit retrofit;
-
     public RetrofitFactory() {
->>>>>>> 67d1e74f900b6073a9bfc53b1e195d8f6a5ee3de
+
         retrofit = createRetrofit();
     }
 
@@ -50,11 +43,9 @@ public class RetrofitFactory {
      * 双重锁成就单例
      * @return
      */
-<<<<<<< HEAD
+
     public synchronized static RetrofitFactory getMyRetrofit() {
-=======
-    public synchronized RetrofitFactory getMyRetrofit() {
->>>>>>> 67d1e74f900b6073a9bfc53b1e195d8f6a5ee3de
+
         if (myRetrofit == null) {
             synchronized (RetrofitFactory.class) {
                 if (myRetrofit == null) {
