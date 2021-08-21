@@ -3,6 +3,7 @@ package com.shuke.homepage.customview
 import android.content.Context
 import android.os.IInterface
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import kotlin.properties.Delegates
@@ -81,5 +82,26 @@ class FluidView : ViewGroup{
 
         }
     }
+
+    private var childViewClickLisenter: ChildViewClickLisenter? = null
+
+    fun setChildViewClickLisenter(_childViewClickLisenter: ChildViewClickLisenter){
+        childViewClickLisenter = _childViewClickLisenter
+        setchildLisenter()
+    }
+
+    private fun setchildLisenter() {
+
+        for (i in 1..childCount){
+            Log.i("TAG", "setchildLisenter: "+childCount)
+            val childAt : TextItem = this.getChildAt(i-1) as TextItem
+            childAt.setChildViewLisenter(object : ChildViewLisenter{
+                override fun onDel() {
+                    childViewClickLisenter!!.onClick(i)
+                }
+            })
+        }
+    }
+
 
 }

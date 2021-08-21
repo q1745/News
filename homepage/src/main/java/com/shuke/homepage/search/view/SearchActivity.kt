@@ -1,7 +1,9 @@
 package com.shuke.homepage.search.view
 
+import android.util.Log
 import com.shuke.homepage.BR
 import com.shuke.homepage.R
+import com.shuke.homepage.customview.ChildViewClickLisenter
 import com.shuke.homepage.customview.FluidViewAdapter
 import com.shuke.homepage.customview.TextItem
 import com.shuke.homepage.databinding.SearchActView
@@ -21,14 +23,16 @@ class SearchActivity : MVVMActivity<SearchActView,SearchViewModel>(){
     }
 
     override fun loadData() {
-        var views:MutableList<TextItem> = mutableListOf()
-        var ite : TextItem = TextItem(this)
-        ite.setT("债看得完安娃娃多缴纳我电脑哦按我带你俩")
-        views.add(ite)
-//        for (i in 0..20){
-//            views.add(ite)
-//        }
-        FluidViewAdapter.Adaptive(fluidview,views)
+//        var views:MutableList<TextItem> = mutableListOf()
+//        var ite : TextItem = TextItem(this)
+//        ite.setT("债看得完安娃娃多缴纳我电脑哦按我带你俩")
+//        views.add(ite)
+//        FluidViewAdapter.Adaptive(fluidview,views)
+        fluidview.setChildViewClickLisenter(object : ChildViewClickLisenter {
+            override fun onClick(position: Int) {
+                Log.i("TAG", "onClick: "+position)
+            }
+        })
     }
 
     override fun initVarMap(vars: MutableMap<Int, Any>): MutableMap<Int, Any> {

@@ -6,6 +6,7 @@ import android.content.res.TypedArray
 import android.graphics.*
 import android.util.AttributeSet
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import com.shuke.homepage.R
 
@@ -51,12 +52,8 @@ class TextItem : View {
     }
     fun setT(_text:String){
         this.text = _text
-        Log.i("TAG", "defaultWidth: "+defaultWidth)
-        Log.i("TAG", "defaultHeight: "+defaultHeight)
         measureWH()
         setMeasuredDimension(defaultWidth.toInt(),defaultHeight.toInt())
-        Log.i("TAG", "defaultWidth: "+defaultWidth)
-        Log.i("TAG", "defaultHeight: "+defaultHeight)
     }
     private fun getAttrsValues(context: Context?, attrs: AttributeSet?) {
         if (attrs == null){
@@ -127,7 +124,24 @@ class TextItem : View {
         }else{
             canvas!!.drawText(text,(defaultWidth-textWidth) / 2,defaultHeight/ 2+textHeight/2+2,textPaint)
         }
-        Log.i("TAG", "defaultHeight: "+defaultHeight)
-        Log.i("TAG", "textHeight: "+textHeight)
     }
+
+    /**
+     * 点击删除按钮的监听事件
+     */
+    private var childViewLisenter: ChildViewLisenter? = null
+
+    fun setChildViewLisenter(_childViewLisenter: ChildViewLisenter){
+        childViewLisenter = _childViewLisenter
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        if (event!!.x in (defaultWidth - 45F)..defaultWidth){
+           if (childViewLisenter != null){
+               childViewLisenter!!.onDel()
+           }
+        }
+        return super.onTouchEvent(event)
+    }
+
 }
