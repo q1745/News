@@ -1,5 +1,7 @@
 package com.shuke.homepage.news.viewmodel;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 
 import com.shuke.homepage.entity.NewsEntity;
@@ -8,6 +10,10 @@ import com.shuke.mvvmcore.BaseRepository;
 import com.shuke.mvvmcore.BaseViewModel;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+
+import io.reactivex.Observer;
 
 /**
  * @ClassName NewsViewModel
@@ -18,6 +24,10 @@ import org.jetbrains.annotations.NotNull;
  */
 public class NewsViewModel extends BaseViewModel<NewsRepository> {
 
+    @Override
+    public NewsRepository createRepository() {
+        return new NewsRepository();
+    }
 
     @Override
     public void releaseResource() {
@@ -26,16 +36,11 @@ public class NewsViewModel extends BaseViewModel<NewsRepository> {
 
     @Override
     public void initResource() {
-        repo.injectModel();
-    }
-
-    public LiveData<NewsEntity.DataBean> getNews() {
-        return repo.getNews();
-    }
-
-
-    @Override
-    public void createRepository() {
 
     }
+
+    public void getNews(Observer<NewsEntity> news) {
+        repo.getNews(news);
+    }
+
 }

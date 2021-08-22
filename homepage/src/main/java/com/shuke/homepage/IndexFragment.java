@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabLayout;
 import com.shuke.homepage.adapter.MainVpAdapter;
+import com.shuke.homepage.custom.CustomHobbyType;
+import com.shuke.homepage.guide.view.NewsTypeActivity;
 import com.shuke.homepage.news.view.NewsFragment;
 
 import java.util.ArrayList;
@@ -35,8 +37,8 @@ public class IndexFragment extends Fragment {
 
         fragments.add(new NewsFragment());
 
-        for (int i = 0; i < CustomActivity.list.size(); i++) {
-            tab.addTab(tab.newTab().setText(CustomActivity.list.get(i)));
+        for (int i = 0; i < CustomHobbyType.texts.size(); i++) {
+            tab.addTab(tab.newTab().setText(CustomHobbyType.texts.get(i)));
         }
 
         vp.setAdapter(new MainVpAdapter(getActivity().getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,fragments));

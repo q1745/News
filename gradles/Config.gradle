@@ -15,6 +15,7 @@ ext{
             coroutinesadapter:"com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${version.coroutinesadapter}",
             coroutinesandroid:"org.jetbrains.kotlinx:kotlinx-coroutines-android:${version.coroutinesandroid}",
             banner: "com.youth.banner:banner:${version.banner}",
-            BaseRecyclerViewAdapterHelper:"com.github.CymChad:BaseRecyclerViewAdapterHelper:${version.BaseRecyclerViewAdapterHelper}"
+            BaseRecyclerViewAdapterHelper:"com.github.CymChad:BaseRecyclerViewAdapterHelper:${version.BaseRecyclerViewAdapterHelper}",
+            multidex:"androidx.multidex:multidex:${version.multidex}"
     ]
 }
