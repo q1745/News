@@ -116,7 +116,6 @@ class TextItem : View {
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        Log.i("TAG", "onDraw: "+defaultWidth)
         canvas!!.drawRoundRect(RectF(0F,0F,defaultWidth,defaultHeight),22F,22F,bgPaint)
         if (IsHaveX){
             canvas!!.drawBitmap(createBitmap,defaultWidth - 45,0F,XPaint)
@@ -138,7 +137,7 @@ class TextItem : View {
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         if (event!!.x in (defaultWidth - 45F)..defaultWidth){
            if (childViewLisenter != null){
-               childViewLisenter!!.onDel()
+               childViewLisenter!!.onDel(this)
            }
         }
         return super.onTouchEvent(event)

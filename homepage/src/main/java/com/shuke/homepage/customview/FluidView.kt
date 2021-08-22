@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.marginTop
 import kotlin.properties.Delegates
 
 /**
@@ -22,6 +23,9 @@ class FluidView : ViewGroup{
     var curlen : Int = 0
 
     var maxHeight : Int = 0
+
+    var marRight : Int = 20
+    var marBottom : Int = 20
 
 
     constructor(context: Context?) : super(context)
@@ -67,22 +71,23 @@ class FluidView : ViewGroup{
             if(i == 0){
                 childView.layout(_left,_top,childView.measuredWidth,childView.measuredHeight)
                 _left = childView.measuredWidth
-                curlen += childView.measuredWidth
+                curlen += (childView.measuredWidth + marRight)
                 maxHeight = childView.measuredHeight
                 continue
             }
 
-            curlen += childView.measuredWidth
+            curlen += (childView.measuredWidth + marRight)
 
             if (curlen <= measuredWidth){
                 if (childView.measuredHeight > maxHeight){
                     maxHeight = childView.measuredHeight
                 }
-                childView.layout(_left,_top,childView.measuredWidth+_left,childView.measuredHeight+_top)
-                _left += childView.measuredWidth
+                childView.layout(_left+ marRight,_top,childView.measuredWidth+_left+ marRight,childView.measuredHeight+_top)
+                _left += (childView.measuredWidth + marRight)
             }
             else{
                 _left = 0
+                _top += marBottom
                 curlen = childView.measuredWidth
                 _top += maxHeight
                 maxHeight = childView.measuredHeight
@@ -101,23 +106,24 @@ class FluidView : ViewGroup{
 
     private fun setchildLisenter() {
 
-        for (i in 0..childCount){
-            val childAt : TextItem = this.getChildAt(i) as TextItem
+        for (i in 1..childCount){
+            val childAt : TextItem = this.getChildAt(i - 1) as TextItem
             childAt.setChildViewLisenter(object : ChildViewLisenter{
-                override fun onDel() {
-                    childViewClickLisenter!!.onClick(i)
+                override fun onDel(view: View) {
+                    childViewClickLisenter!!.onClick(view)
                 }
             })
         }
     }
 
-
     //删除子控件
-    fun removeChildView(position:Int){
-        Log.i("TAG", "removeChildView: "+position)
-        removeViewAt(position)
+    fun removeChildView(view:View){
+        removeView(view)
         layoutAll()
     }
 
+    fun delall() {
+        removeAllViews()
+    }
 
 }

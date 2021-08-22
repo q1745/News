@@ -1,5 +1,7 @@
 package com.shuke.homepage.customview
 
+import android.view.View
+
 /**
  *   @Author:YaPeng
  *   @Date:2021/8/21
@@ -7,5 +9,5 @@ package com.shuke.homepage.customview
  *   子控件的点击删除监听
  */
 interface ChildViewLisenter {
-    fun onDel()
+    fun onDel(view : View)
 }

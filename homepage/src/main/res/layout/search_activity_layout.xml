@@ -5,7 +5,7 @@
 
     <data class="SearchActView">
         <variable
-            name="aaa"
+            name="myAct"
             type="com.shuke.homepage.search.view.SearchActivity" />
     </data>
 
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <EditText
             android:paddingLeft="36dp"
             android:gravity="center_vertical"
             android:text="户外背包"
@@ -61,14 +61,15 @@
             android:layout_height="36dp"/>
 
         <ImageView
+            android:onClick="@{(view) -> myAct.delAll()}"
+            android:layout_width="15dp"
+            android:layout_height="16dp"
+            android:layout_alignParentRight="true"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="85dp"
-            android:layout_marginRight="15dp"
-            android:src="@drawable/lajitong"
-            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
             android:gravity="center"
-            android:layout_width="26dp"
-            android:layout_height="26dp"/>
+            android:src="@drawable/lajitong" />
 
 
         <com.shuke.homepage.customview.FluidView
@@ -77,12 +78,6 @@
             android:layout_marginTop="120dp"
             android:layout_width="350dp"
             android:layout_height="200dp">
-            <com.shuke.homepage.customview.TextItem
-                shuke:text="志强"
-                shuke:isHaveX="true"
-                shuke:bgColor="#EDEDED"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
         </com.shuke.homepage.customview.FluidView>
     </RelativeLayout>
 </layout>
