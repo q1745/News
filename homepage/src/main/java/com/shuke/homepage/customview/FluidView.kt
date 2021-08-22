@@ -49,6 +49,16 @@ class FluidView : ViewGroup{
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
 
+        layoutAll()
+    }
+
+    private fun layoutAll() {
+
+        _left = 0
+        _top = 0
+        curlen = 0
+        maxHeight = 0
+
         var count : Int = childCount
 
         for (i in 0 .. (count - 1)){
@@ -79,7 +89,6 @@ class FluidView : ViewGroup{
                 childView.layout(_left,_top,childView.measuredWidth + _left,childView.measuredHeight + _top)
                 _left +=childView.measuredWidth
             }
-
         }
     }
 
@@ -92,15 +101,22 @@ class FluidView : ViewGroup{
 
     private fun setchildLisenter() {
 
-        for (i in 1..childCount){
-            Log.i("TAG", "setchildLisenter: "+childCount)
-            val childAt : TextItem = this.getChildAt(i-1) as TextItem
+        for (i in 0..childCount){
+            val childAt : TextItem = this.getChildAt(i) as TextItem
             childAt.setChildViewLisenter(object : ChildViewLisenter{
                 override fun onDel() {
                     childViewClickLisenter!!.onClick(i)
                 }
             })
         }
+    }
+
+
+    //删除子控件
+    fun removeChildView(position:Int){
+        Log.i("TAG", "removeChildView: "+position)
+        removeViewAt(position)
+        layoutAll()
     }
 
 
