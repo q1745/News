@@ -3,8 +3,11 @@ package com.shuke.homepage.customview
 import android.content.Context
 import android.os.IInterface
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.marginTop
+import com.shuke.homepage.search.db.SearchDBUtils
 import kotlin.properties.Delegates
 
 /**
@@ -22,6 +25,9 @@ class FluidView : ViewGroup{
 
     var maxHeight : Int = 0
 
+    var marRight : Int = 20
+    var marBottom : Int = 20
+
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -31,6 +37,7 @@ class FluidView : ViewGroup{
      */
     fun addChildView(view:View){
         addView(view)
+
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -48,6 +55,16 @@ class FluidView : ViewGroup{
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
 
+        layoutAll()
+    }
+
+    private fun layoutAll() {
+
+        _left = 0
+        _top = 0
+        curlen = 0
+        maxHeight = 0
+
         var count : Int = childCount
 
         for (i in 0 .. (count - 1)){
@@ -56,30 +73,59 @@ class FluidView : ViewGroup{
             if(i == 0){
                 childView.layout(_left,_top,childView.measuredWidth,childView.measuredHeight)
                 _left = childView.measuredWidth
-                curlen += childView.measuredWidth
+                curlen += (childView.measuredWidth + marRight)
                 maxHeight = childView.measuredHeight
                 continue
             }
 
-            curlen += childView.measuredWidth
+            curlen += (childView.measuredWidth + marRight)
 
             if (curlen <= measuredWidth){
                 if (childView.measuredHeight > maxHeight){
                     maxHeight = childView.measuredHeight
                 }
-                childView.layout(_left,_top,childView.measuredWidth+_left,childView.measuredHeight+_top)
-                _left += childView.measuredWidth
+                childView.layout(_left+ marRight,_top,childView.measuredWidth+_left+ marRight,childView.measuredHeight+_top)
+                _left += (childView.measuredWidth + marRight)
             }
             else{
                 _left = 0
+                _top += marBottom
                 curlen = childView.measuredWidth
                 _top += maxHeight
                 maxHeight = childView.measuredHeight
                 childView.layout(_left,_top,childView.measuredWidth + _left,childView.measuredHeight + _top)
                 _left +=childView.measuredWidth
             }
-
         }
+    }
+
+    private var childViewClickLisenter: ChildViewClickLisenter? = null
+
+    fun setChildViewClickLisenter(_childViewClickLisenter: ChildViewClickLisenter){
+        childViewClickLisenter = _childViewClickLisenter
+        setchildLisenter()
+    }
+
+    private fun setchildLisenter() {
+        Log.i("TAG", "setchildLisenter: "+childCount)
+        for (i in 1..childCount){
+            val childAt : TextItem = this.getChildAt(i - 1) as TextItem
+            childAt.setChildViewLisenter(object : ChildViewLisenter{
+                override fun onDel(view: View) {
+                    childViewClickLisenter!!.onClick(view)
+                }
+            })
+        }
+    }
+
+    //删除子控件
+    fun removeChildView(view:View){
+        removeView(view)
+        layoutAll()
+    }
+
+    fun delall() {
+        removeAllViews()
     }
 
 }

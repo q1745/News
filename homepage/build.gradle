@@ -7,10 +7,11 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 def dependen = rootProject.ext.dependenciesConfig
+def room_version = "2.3.0"
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
-
     defaultConfig {
         applicationId "com.shuke.homepage"
         minSdkVersion 16
@@ -41,19 +42,16 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation project(path: ':Common')
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation project(path: ':MVVMCore')
     implementation project(path: ':Net')
     implementation project(path: ':Resources')
+    implementation project(path: ':Common')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     implementation dependen.rxjava
     implementation dependen.rxandroid
@@ -65,6 +63,13 @@ dependencies {
     implementation dependen.glide
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     implementation dependen.BaseRecyclerViewAdapterHelper
+
+    //----------roomDB start-----------
+
+
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    //---------roomDB end---------------
 }
 repositories {
     mavenCentral()

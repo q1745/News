@@ -6,8 +6,10 @@ import android.content.res.TypedArray
 import android.graphics.*
 import android.util.AttributeSet
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import com.shuke.homepage.R
+import com.shuke.homepage.search.db.SearchHistoryEntity
 
 /**
  *   @Author:YaPeng
@@ -22,9 +24,11 @@ class TextItem : View {
     //画X的画笔
     lateinit var XPaint : Paint
 
-    var text : String = "你没给值"
+    var text : String = "你没传值啊我的老baby"
     var IsHaveX : Boolean = true
     var color : Int = Color.parseColor("#F1F1F1")
+
+    lateinit var item:SearchHistoryEntity
 
     /**
      * 设置默认宽高
@@ -51,12 +55,8 @@ class TextItem : View {
     }
     fun setT(_text:String){
         this.text = _text
-        Log.i("TAG", "defaultWidth: "+defaultWidth)
-        Log.i("TAG", "defaultHeight: "+defaultHeight)
         measureWH()
         setMeasuredDimension(defaultWidth.toInt(),defaultHeight.toInt())
-        Log.i("TAG", "defaultWidth: "+defaultWidth)
-        Log.i("TAG", "defaultHeight: "+defaultHeight)
     }
     private fun getAttrsValues(context: Context?, attrs: AttributeSet?) {
         if (attrs == null){
@@ -119,7 +119,6 @@ class TextItem : View {
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        Log.i("TAG", "onDraw: "+defaultWidth)
         canvas!!.drawRoundRect(RectF(0F,0F,defaultWidth,defaultHeight),22F,22F,bgPaint)
         if (IsHaveX){
             canvas!!.drawBitmap(createBitmap,defaultWidth - 45,0F,XPaint)
@@ -127,7 +126,25 @@ class TextItem : View {
         }else{
             canvas!!.drawText(text,(defaultWidth-textWidth) / 2,defaultHeight/ 2+textHeight/2+2,textPaint)
         }
-        Log.i("TAG", "defaultHeight: "+defaultHeight)
-        Log.i("TAG", "textHeight: "+textHeight)
     }
+
+    /**
+     * 点击删除按钮的监听事件
+     */
+    private var childViewLisenter: ChildViewLisenter? = null
+
+    fun setChildViewLisenter(_childViewLisenter: ChildViewLisenter){
+        childViewLisenter = _childViewLisenter
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        if (event!!.x in (defaultWidth - 45F)..defaultWidth){
+            Log.i("TAG", "onTouchEvent: "+(childViewLisenter==null))
+           if (childViewLisenter != null){
+               childViewLisenter!!.onDel(this)
+           }
+        }
+        return super.onTouchEvent(event)
+    }
+
 }
