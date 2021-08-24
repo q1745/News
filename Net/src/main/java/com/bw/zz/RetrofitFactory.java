@@ -31,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitFactory {
 
-    private volatile RetrofitFactory myRetrofit = null;
+    private static volatile RetrofitFactory myRetrofit = null;
     private Retrofit retrofit;
 
     public RetrofitFactory() {
@@ -42,7 +42,7 @@ public class RetrofitFactory {
      * 双重锁成就单例
      * @return
      */
-    public synchronized RetrofitFactory getMyRetrofit() {
+    public static synchronized RetrofitFactory getMyRetrofit() {
         if (myRetrofit == null) {
             synchronized (RetrofitFactory.class) {
                 if (myRetrofit == null) {
@@ -59,7 +59,7 @@ public class RetrofitFactory {
      */
     public Retrofit createRetrofit() {
         return new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl("http://39.98.153.96:8080/Help/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addConverterFactory(CustomGsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
