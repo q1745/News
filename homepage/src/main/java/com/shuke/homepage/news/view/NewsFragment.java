@@ -25,6 +25,8 @@ import io.reactivex.disposables.Disposable;
  * @Author ZZQ
  * @Date 2021/8/20 20:02
  * @Version 1.0
+ *
+ * 新闻数据页面
  */
 public class NewsFragment extends MVVMFragment<MyNewsFragment, NewsViewModel>{
 
@@ -50,6 +52,7 @@ public class NewsFragment extends MVVMFragment<MyNewsFragment, NewsViewModel>{
 
     @Override
     public void initEvent() {
+        //请求数据
         viewModel.getNews(new Observer<NewsEntity>() {
             @Override
             public void onSubscribe(Disposable d) {
@@ -58,6 +61,7 @@ public class NewsFragment extends MVVMFragment<MyNewsFragment, NewsViewModel>{
 
             @Override
             public void onNext(NewsEntity newsEntity) {
+                //多布局判断
                 for(int i = 0; i < newsEntity.getData().size(); i++) {
                     if (i % 4 == 0) {
                         newsEntity.getData().get(i).setItemType(0);
