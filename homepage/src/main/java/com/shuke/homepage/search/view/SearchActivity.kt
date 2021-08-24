@@ -1,12 +1,15 @@
 package com.shuke.homepage.search.view
 
-import android.os.Looper
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
+import com.shuke.common.ThreadUtil
 import com.shuke.homepage.BR
 import com.shuke.homepage.R
 import com.shuke.homepage.customview.ChildViewClickLisenter
-import com.shuke.homepage.customview.FluidViewAdapter
+import com.shuke.homepage.customview.FluidViewUtils
 import com.shuke.homepage.customview.TextItem
 import com.shuke.homepage.databinding.SearchActView
 import com.shuke.homepage.search.db.SearchDBUtils
@@ -14,8 +17,6 @@ import com.shuke.homepage.search.db.SearchHistoryEntity
 import com.shuke.homepage.search.viewmodel.SearchViewModel
 import com.shuke.mvvmcore.view.MVVMActivity
 import kotlinx.android.synthetic.main.search_activity_layout.*
-import java.util.concurrent.Executor
-import java.util.concurrent.Executors
 
 /**
  *   @Author:YaPeng
@@ -29,26 +30,45 @@ class SearchActivity : MVVMActivity<SearchActView,SearchViewModel>(){
     }
 
     override fun loadData() {
-        var views:MutableList<TextItem> = mutableListOf()
-        for (i in 0..10){
-            var ite : TextItem = TextItem(this)
-            ite.setT(i.toString())
-            views.add(ite)
-            var aa : SearchHistoryEntity = SearchHistoryEntity(i.toString())
-
-        }
-        Executors.newCachedThreadPool().submit(object : Runnable{
+        fragment_homepage_search_textview.setOnEditorActionListener(object : TextView.OnEditorActionListener{
+            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+                if (actionId == EditorInfo.IME_ACTION_SEND
+                    || actionId == EditorInfo.IME_ACTION_DONE
+                    || (event != null && KeyEvent.KEYCODE_ENTER == event.getKeyCode() && KeyEvent.ACTION_DOWN == event.getAction())) {
+                        val text = fragment_homepage_search_textview.text.toString().trim()
+                    if (!text.isEmpty()){
+                        var searchHistory = SearchHistoryEntity(text)
+                        FluidViewUtils.InsertView(fluidview,searchHistory,this@SearchActivity)
+                    }
+                   return true
+                }
+                return false
+            }
+        })
+//        val text = fragment_homepage_search_textview.text.toString().trim()
+//        var searchHistory = SearchHistoryEntity(text)
+//        FluidViewUtils.InsertView(fluidview,searchHistory,this@SearchActivity)
+        ThreadUtil.doTaskAsync(object : Runnable{
             override fun run() {
-               var aa = SearchDBUtils.getSearchDB(this@SearchActivity).searchHistoryDao().queryAll()
-                Log.i("TAG", "run: "+aa.size)
+                var allHistory = SearchDBUtils.getSearchDB(this@SearchActivity).searchHistoryDao().queryAll()
+                FluidViewUtils.Adaptive(fluidview,allHistory,this@SearchActivity)
             }
         })
-        FluidViewAdapter.Adaptive(fluidview,views)
-        fluidview.setChildViewClickLisenter(object : ChildViewClickLisenter {
-            override fun onClick(view:View) {
-                fluidview.removeChildView(view)
-            }
-        })
+//        var views:MutableList<TextItem> = mutableListOf()
+//        for (i in 0..10){
+//            var ite : TextItem = TextItem(this)
+//            ite.setT(i.toString())
+//            views.add(ite)
+//            var aa : SearchHistoryEntity = SearchHistoryEntity(i.toString())
+//        }
+//        Executors.newCachedThreadPool().submit(object : Runnable{
+//            override fun run() {
+//               var aa = SearchDBUtils.getSearchDB(this@SearchActivity).searchHistoryDao().queryAll()
+//                Log.i("TAG", "run: "+aa.size)
+//            }
+//        })
+//        FluidViewAdapter.Adaptive(fluidview,views)
+
     }
 
     override fun initVarMap(vars: MutableMap<Int, Any>): MutableMap<Int, Any> {
@@ -66,5 +86,10 @@ class SearchActivity : MVVMActivity<SearchActView,SearchViewModel>(){
 
     fun delAll(){
         fluidview.delall()
+        ThreadUtil.doTaskAsync(object : Runnable{
+            override fun run() {
+                SearchDBUtils.getSearchDB(this@SearchActivity).searchHistoryDao()
+            }
+        })
     }
 }

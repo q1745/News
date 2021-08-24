@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import com.shuke.homepage.R
+import com.shuke.homepage.search.db.SearchHistoryEntity
 
 /**
  *   @Author:YaPeng
@@ -23,9 +24,11 @@ class TextItem : View {
     //画X的画笔
     lateinit var XPaint : Paint
 
-    var text : String = "你没给值"
+    var text : String = "你没传值啊我的老baby"
     var IsHaveX : Boolean = true
     var color : Int = Color.parseColor("#F1F1F1")
+
+    lateinit var item:SearchHistoryEntity
 
     /**
      * 设置默认宽高
@@ -136,6 +139,7 @@ class TextItem : View {
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         if (event!!.x in (defaultWidth - 45F)..defaultWidth){
+            Log.i("TAG", "onTouchEvent: "+(childViewLisenter==null))
            if (childViewLisenter != null){
                childViewLisenter!!.onDel(this)
            }

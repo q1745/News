@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.marginTop
+import com.shuke.homepage.search.db.SearchDBUtils
 import kotlin.properties.Delegates
 
 /**
@@ -36,6 +37,7 @@ class FluidView : ViewGroup{
      */
     fun addChildView(view:View){
         addView(view)
+
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -105,7 +107,7 @@ class FluidView : ViewGroup{
     }
 
     private fun setchildLisenter() {
-
+        Log.i("TAG", "setchildLisenter: "+childCount)
         for (i in 1..childCount){
             val childAt : TextItem = this.getChildAt(i - 1) as TextItem
             childAt.setChildViewLisenter(object : ChildViewLisenter{

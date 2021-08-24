@@ -14,6 +14,7 @@ abstract class BaseViewModel<Repo : BaseRepository>()  : ViewModel() , Lifecycle
 
     constructor(lifecycle: LifecycleOwner) : this(){
         owner = lifecycle
+        owner.lifecycle.addObserver(this)
     }
 
     protected lateinit var repo: Repo
