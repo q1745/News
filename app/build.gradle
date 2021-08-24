@@ -41,4 +41,5 @@ dependencies {
 
     //依赖超过65536
     implementation configs.multidex
+    implementation configs.BottomBar
 }

@@ -15,6 +15,7 @@ ext{
             coroutinesandroid:"1.4.2",
             banner:"1.4.10",
             BaseRecyclerViewAdapterHelper:"3.0.0",
-            multidex:"2.0.1"
+            multidex:"2.0.1",
+            BottomBar:"2.0.5"
     ]
 }
