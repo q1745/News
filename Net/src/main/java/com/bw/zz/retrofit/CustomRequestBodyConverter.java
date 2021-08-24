@@ -1,5 +1,6 @@
 package com.bw.zz.retrofit;
 
+import com.bw.zz.protocol.BaseRespEntity;
 import com.google.gson.Gson;
 
 import java.io.IOException;

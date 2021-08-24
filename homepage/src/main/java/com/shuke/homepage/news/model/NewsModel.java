@@ -1,23 +1,22 @@
 package com.shuke.homepage.news.model;
 
-import android.os.Looper;
-
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-
 import com.bw.zz.RetrofitFactory;
 import com.shuke.homepage.api.Api;
 import com.shuke.homepage.entity.NewsEntity;
-import com.shuke.mvvmcore.BaseViewModel;
 import com.shuke.mvvmcore.IModel;
 
-import org.jetbrains.annotations.NotNull;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * @ClassName NewsModel
@@ -28,41 +27,15 @@ import retrofit2.Retrofit;
  */
 public class NewsModel implements IModel {
 
-    public LiveData<NewsEntity.DataBean> getNews() {
+    public void getNews(Observer<NewsEntity> news) {
 
-        MutableLiveData<NewsEntity.DataBean> liveData = new MutableLiveData<>();
-        RetrofitFactory.getMyRetrofit().createRetrofit()
+        RetrofitFactory.getMyRetrofit()
+                .createRetrofit()
                 .create(Api.class)
                 .getNews(1,1,10)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<NewsEntity>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
+                .subscribe(news);
 
-                    }
-
-                    @Override
-                    public void onNext(NewsEntity newsEntity) {
-                        if (Looper.getMainLooper().getThread() == Thread.currentThread()) {
-                            liveData.setValue((NewsEntity.DataBean) newsEntity.getData());
-                        } else {
-                            liveData.postValue((NewsEntity.DataBean) newsEntity.getData());
-                        }
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-
-        return liveData;
     }
 }

@@ -43,6 +43,15 @@ public class NewsEntity {
         return data;
     }
 
+    @Override
+    public String toString() {
+        return "NewsEntity{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
+
     public void setData(List<DataBean> data) {
         this.data = data;
     }
@@ -79,6 +88,25 @@ public class NewsEntity {
         private String sourceurl;
         private String mainimgurl;
         private String istop;
+
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "id=" + id +
+                    ", newscode='" + newscode + '\'' +
+                    ", newstypeid=" + newstypeid +
+                    ", sourcesiteid=" + sourcesiteid +
+                    ", sourcesitename='" + sourcesitename + '\'' +
+                    ", title='" + title + '\'' +
+                    ", description='" + description + '\'' +
+                    ", auth='" + auth + '\'' +
+                    ", sourceurl='" + sourceurl + '\'' +
+                    ", mainimgurl='" + mainimgurl + '\'' +
+                    ", istop='" + istop + '\'' +
+                    ", itemType=" + itemType +
+                    '}';
+        }
 
         //标记多布局的属性
         private int itemType;

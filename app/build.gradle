@@ -13,6 +13,9 @@ android {
         versionCode 1
         versionName "1.0"
 
+        //依赖超过65536
+        multiDexEnabled true
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -35,4 +38,8 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //依赖超过65536
+    implementation configs.multidex
+    implementation configs.BottomBar
 }

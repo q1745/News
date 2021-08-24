@@ -19,6 +19,9 @@ android {
         versionCode 1
         versionName "1.0"
 
+        //依赖超过65536
+        multiDexEnabled true
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -64,12 +67,17 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     implementation dependen.BaseRecyclerViewAdapterHelper
 
+    //依赖超过65536
+    implementation dependen.multidex
+
     //----------roomDB start-----------
 
 
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     //---------roomDB end---------------
+    
+
 }
 repositories {
     mavenCentral()

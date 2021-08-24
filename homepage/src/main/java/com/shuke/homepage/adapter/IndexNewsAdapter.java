@@ -1,6 +1,7 @@
 package com.shuke.homepage.adapter;
 
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
@@ -29,7 +30,7 @@ public class IndexNewsAdapter extends BaseMultiItemQuickAdapter<NewsEntity.DataB
     @Override
     protected void convert(BaseViewHolder baseViewHolder, NewsEntity.DataBean dataBean) {
 
-        switch (baseViewHolder.getItemViewType()){
+        switch (dataBean.getItemType()){
             case NewsEntity.DataBean.ONE:
                 baseViewHolder.setText(R.id.item_one_tv_title,dataBean.getTitle());
                 baseViewHolder.setText(R.id.item_one_tv_sourcesitename,dataBean.getSourcesitename());
