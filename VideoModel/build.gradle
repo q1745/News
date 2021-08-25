@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'calces.modules'
     id 'kotlin-android'
 }
 
@@ -8,7 +8,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.shuke.videomodel"
+
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1

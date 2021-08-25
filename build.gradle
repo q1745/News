@@ -1,5 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-apply from:"gradles/Base.gradle"
+
 buildscript {
 
     ext.kotlin_version = '1.5.0-release-764'
@@ -19,6 +19,73 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
+
+plugins {
+    id "calces.appconfig" version "3.3.0-alpha01"
+}
+
+appConfig {
+    //开关
+    debugEnable true
+    apps {
+        app {
+            name ":app"
+            applicationId "com.bw.news"
+            applicationName ".App"
+            mainActivity ".MainActivity"
+            modules ':Login',
+                    ':Homepage',
+                    ':VideoModel',
+                    ':HeadLine',
+                    ':Mine'
+        }
+    }
+
+    modules {
+
+        Login {
+            name ":Login"
+            applicationId "com.shuke.login"
+            applicationName ".App"
+            mainActivity ".MainActivity"
+            isRunAlone false
+        }
+
+        Homepage {
+            name ":Homepage"
+            applicationId "com.shuke.homepage"
+            applicationName ".App"
+            mainActivity ".MainActivity"
+            isRunAlone true
+        }
+
+        VideoModel {
+            name ":VideoModel"
+            applicationId "com.shuke.videomodel"
+            applicationName ".App"
+            mainActivity ".MainActivity"
+            isRunAlone false
+        }
+
+        HeadLine {
+            name ":HeadLine"
+            applicationId "com.bw.headline"
+            applicationName ".App"
+            mainActivity ".MainActivity"
+            isRunAlone false
+        }
+
+        Mine {
+            name ":Mine"
+            applicationId "com.bw.mine"
+            applicationName ".App"
+            mainActivity ".MainActivity"
+            isRunAlone false
+        }
+    }
+}
+
+apply from:"gradles/Base.gradle"
 
 allprojects {
     repositories {

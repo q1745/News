@@ -8,11 +8,14 @@ include ':MVVMCore'
 include ':Common'
 include ':VideoModel'
 include ':register'
-include ':login'
-include ':homepage'
+include ':Login'
+include ':Homepage'
 
 
 
 
 include ':Resources'
 
+include ':Mine'
+include ':HeadLine'
+include ':Register'
