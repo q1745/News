@@ -26,11 +26,9 @@ abstract class MVVMActivity<V : ViewDataBinding,VM : BaseViewModel<*>> : AppComp
         vars = initVarMap(vars)
         setVars(binding,vars)
         viewModel = createViewModel()
-
         if(isClearBar()){
             clearBar()
         }
-
         loadData()
         initEvent()
     }
