@@ -17,6 +17,6 @@ import retrofit2.http.POST;
  * @ClassName: RegisterApi
  */
 public interface RegisterApi {
-    @POST("api/User/register")
+    @POST("/api/User/register")
     LiveData<BaseRespEntity<RegisterEntity>> regis(@Body RegisterEntity entity);
 }

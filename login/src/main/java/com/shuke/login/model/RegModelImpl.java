@@ -20,7 +20,6 @@ import com.shuke.mvvmcore.IModel;
  */
 public class RegModelImpl implements IModel {
     public LiveData<RegisterEntity> register(RegisterEntity entity){
-        LogUtil.i("123","RegModelImpl");
         MutableLiveData<RegisterEntity> liveData = new MutableLiveData<>();
         if (Looper.myLooper()!=Looper.getMainLooper()){
             liveData.postValue(entity);

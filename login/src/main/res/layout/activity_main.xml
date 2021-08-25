@@ -12,16 +12,17 @@
             type="android.view.View.OnClickListener" />
     </data>
     <LinearLayout
+
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
-            android:text="963"
+            android:text="@={datapage.pageSource.username}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </EditText>
         <EditText
-            android:text="963"
+            android:text="@={datapage.pageSource.pwd}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </EditText>

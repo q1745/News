@@ -24,7 +24,7 @@ public class RegViewModel extends BaseViewModel<RegRepoImpl> {
     public MutableLiveData<RegisterEntity> pageSource = new MutableLiveData<>();
     public RegViewModel(LifecycleOwner lifecycle) {
         super(lifecycle);
-        RegisterEntity registerEntity = new RegisterEntity(1,"1111","11111","","");
+        RegisterEntity registerEntity = new RegisterEntity();
         if (Looper.myLooper()!=Looper.getMainLooper()){
             pageSource.postValue(registerEntity);
         }else{
@@ -47,7 +47,6 @@ public class RegViewModel extends BaseViewModel<RegRepoImpl> {
 
     }
     public LiveData<RegisterEntity> register(RegisterEntity entity){
-        LogUtil.i("123","RegViewModel");
         return repo.register(entity);
     }
 }

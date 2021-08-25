@@ -23,15 +23,13 @@ public class MainActivity extends MVVMActivity<ActivityMainBinding, RegViewModel
 
     @Override
     public RegViewModel createViewModel() {
-        LogUtil.i("123","setSpot");
         return new RegViewModel(this);
     }
 
     @Override
     public Map<Integer, Object> initVarMap(Map<Integer, Object> vars) {
-        vars.put(BR.datapage,this);
         vars.put(BR.datapage,viewModel);
-        return null;
+        return vars;
     }
 
     @Override
@@ -49,12 +47,10 @@ public class MainActivity extends MVVMActivity<ActivityMainBinding, RegViewModel
         binding.setSpot(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.register(new RegisterEntity(1,"011104","11111","",""));
-                viewModel.createRepository().register()
                 RetrofitFactory.getMyRetrofit()
                         .createRetrofit()
                         .create(RegisterApi.class)
-                        .regis(new RegisterEntity(1,"011104","11111","",""))
+                        .regis(viewModel.pageSource.getValue())
                         .observe(MainActivity.this, new Observer<BaseRespEntity<RegisterEntity>>() {
                             @Override
                             public void onChanged(BaseRespEntity<RegisterEntity> registerEntityBaseRespEntity) {
