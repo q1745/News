@@ -1,4 +1,0 @@
-com/shuke/register/MainActivity.java
- com.shuke.register.MainActivity
-com/shuke/register/BuildConfig.java
- com.shuke.register.BuildConfig
