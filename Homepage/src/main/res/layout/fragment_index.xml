@@ -39,6 +39,7 @@
     </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
+        app:tabGravity="start"
         app:tabMode="scrollable"
         android:id="@+id/index_tab"
         app:tabIndicator="@null"

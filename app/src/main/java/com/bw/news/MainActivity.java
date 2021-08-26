@@ -26,16 +26,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initView();
 
-        mainBottombar.setMode(BottomNavigationBar.MODE_DEFAULT)
-                .setInActiveColor("#623AB5")
-                .setActiveColor("#000000")
-                .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_DEFAULT);
-
-        mainBottombar.addItem(new BottomNavigationItem(R.drawable.index,"首页"))
-                .addItem(new BottomNavigationItem(R.drawable.video,"视频"))
-                .addItem(new BottomNavigationItem(R.drawable.more,"微头条"))
-                .addItem(new BottomNavigationItem(R.drawable.mine,"我的"))
-                .initialise();
+//        mainBottombar.setMode(BottomNavigationBar.MODE_DEFAULT)
+//                .setInActiveColor("#623AB5")
+//                .setActiveColor("#000000")
+//                .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_DEFAULT);
+//
+//        mainBottombar.addItem(new BottomNavigationItem(R.drawable.index,"首页"))
+//                .addItem(new BottomNavigationItem(R.drawable.video,"视频"))
+//                .addItem(new BottomNavigationItem(R.drawable.more,"微头条"))
+//                .addItem(new BottomNavigationItem(R.drawable.mine,"我的"))
+//                .initialise();
     }
 
     private void initView() {
