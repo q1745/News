@@ -59,7 +59,7 @@ public class RetrofitFactory {
      */
     public Retrofit createRetrofit() {
         return new Retrofit.Builder()
-                .baseUrl("http://39.98.153.96:8080/Help/")
+                .baseUrl("http://39.98.153.96:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addConverterFactory(CustomGsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -99,18 +99,14 @@ public class RetrofitFactory {
                 if (!TextUtils.isEmpty(localToken)) {
                     return resetRequest(request,localToken,chain);
                 }
-
                 Response response = chain.proceed(request);
-
                 //如果是401 同步请求Token然后加载到新请求的Header里，重新发起业务请求
                 if (checkHttpCode401(response)) {
                     String token = requestToken();
                     if (TextUtils.isEmpty(token)) {
                         return response;
                     }
-
-                    mToken = token;
-
+                    mToken =token ;
                     return resetRequest(request,token,chain);
                 }
                 return response;
@@ -124,8 +120,7 @@ public class RetrofitFactory {
      * 重置请求
      */
     private Response resetRequest(Request request, String toKen, Interceptor.Chain chain) {
-        Request.Builder newBuilder = request.newBuilder().addHeader("token", toKen);
-
+        Request.Builder newBuilder = request.newBuilder().addHeader("Authorization", "bearer "+toKen);
         Request build = newBuilder.build();
         try {
             return chain.proceed(build);
@@ -168,6 +163,7 @@ public class RetrofitFactory {
         } catch (IOException e) {
             Log.e("123", "error info:" + e.getMessage() );
         }
+
         return "";
     }
 

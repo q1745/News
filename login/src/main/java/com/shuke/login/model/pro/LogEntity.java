@@ -13,14 +13,14 @@ import com.shuke.login.BR;
  * @Package: com.shuke.login.model.pro
  * @ClassName: RegisterEntity
  */
-public class RegisterEntity extends BaseObservable {
+public class LogEntity extends BaseObservable {
     public Integer id;
     public String username;
     public String pwd;
     public String sex;
     public String birthday;
 
-    public RegisterEntity() {
+    public LogEntity() {
     }
 
     public Integer getId() {
@@ -65,7 +65,7 @@ public class RegisterEntity extends BaseObservable {
         this.birthday = birthday;
     }
 
-    public RegisterEntity(Integer id, String username, String pwd, String sex, String birthday) {
+    public LogEntity(Integer id, String username, String pwd, String sex, String birthday) {
         this.id = id;
         this.username = username;
         this.pwd = pwd;
