@@ -48,6 +48,7 @@ drawable magnifying_icon
 drawable mine
 drawable more
 drawable search_edittext_bg
+drawable th
 drawable video
 mipmap ic_launcher
 mipmap ic_launcher_round
