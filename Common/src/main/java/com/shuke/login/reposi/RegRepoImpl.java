@@ -26,4 +26,5 @@ public class RegRepoImpl extends BaseRepository {
     public LiveData<RegisterEntity> register(RegisterEntity entity){
         return regModel.register(entity);
     }
+
 }
