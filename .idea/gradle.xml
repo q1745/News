@@ -12,8 +12,6 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Common" />
             <option value="$PROJECT_DIR$/HeadLine" />
-            <option value="$PROJECT_DIR$/Homepage" />
-            <option value="$PROJECT_DIR$/Login" />
             <option value="$PROJECT_DIR$/MVVMCore" />
             <option value="$PROJECT_DIR$/Mine" />
             <option value="$PROJECT_DIR$/Net" />
@@ -21,6 +19,8 @@
             <option value="$PROJECT_DIR$/Resources" />
             <option value="$PROJECT_DIR$/VideoModel" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/homepage" />
+            <option value="$PROJECT_DIR$/login" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
