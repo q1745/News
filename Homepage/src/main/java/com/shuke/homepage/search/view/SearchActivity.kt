@@ -1,5 +1,6 @@
 package com.shuke.homepage.search.view
 
+import android.util.Log
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
@@ -47,6 +48,9 @@ class SearchActivity : MVVMActivity<SearchActView,SearchViewModel>(){
         ThreadUtil.doTaskAsync(object : Runnable{
             override fun run() {
                 var allHistory = SearchDBUtils.getSearchDB(this@SearchActivity).searchHistoryDao().queryAll()
+                allHistory.forEach {
+                    Log.i("TAG", it.toString()+it.id)
+                }
                 FluidViewUtils.Adaptive(fluidview,allHistory,this@SearchActivity)
             }
         })
@@ -67,11 +71,6 @@ class SearchActivity : MVVMActivity<SearchActView,SearchViewModel>(){
     }
 
     fun delAll(){
-        fluidview.delall()
-        ThreadUtil.doTaskAsync(object : Runnable{
-            override fun run() {
-                SearchDBUtils.getSearchDB(this@SearchActivity).searchHistoryDao()
-            }
-        })
+        fluidview.delall(this@SearchActivity)
     }
 }
