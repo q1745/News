@@ -29,6 +29,7 @@ int anim design_snackbar_out 0x0
 int anim mtrl_bottom_sheet_slide_in 0x0
 int anim mtrl_bottom_sheet_slide_out 0x0
 int anim mtrl_card_lowers_interpolator 0x0
+int anim scale_style 0x0
 int animator design_appbar_state_list_animator 0x0
 int animator design_fab_hide_motion_spec 0x0
 int animator design_fab_show_motion_spec 0x0
@@ -122,6 +123,7 @@ int attr behavior_overlapTop 0x0
 int attr behavior_peekHeight 0x0
 int attr behavior_saveFlags 0x0
 int attr behavior_skipCollapsed 0x0
+int attr bgColor 0x0
 int attr borderWidth 0x0
 int attr borderlessButtonStyle 0x0
 int attr bottomAppBarStyle 0x0
@@ -375,6 +377,7 @@ int attr imageButtonStyle 0x0
 int attr indeterminateProgressStyle 0x0
 int attr initialActivityCount 0x0
 int attr insetForeground 0x0
+int attr isHaveX 0x0
 int attr isLightTheme 0x0
 int attr isMaterialTheme 0x0
 int attr itemBackground 0x0
@@ -605,6 +608,7 @@ int attr tabStyle 0x0
 int attr tabTextAppearance 0x0
 int attr tabTextColor 0x0
 int attr tabUnboundedRipple 0x0
+int attr text 0x0
 int attr textAllCaps 0x0
 int attr textAppearanceBody1 0x0
 int attr textAppearanceBody2 0x0
@@ -1389,6 +1393,7 @@ int drawable design_ic_visibility 0x0
 int drawable design_ic_visibility_off 0x0
 int drawable design_password_eye 0x0
 int drawable design_snackbar_background 0x0
+int drawable ic_action_name 0x0
 int drawable ic_launcher_background 0x0
 int drawable ic_launcher_foreground 0x0
 int drawable ic_mtrl_checked_circle 0x0
@@ -1431,6 +1436,7 @@ int drawable notification_tile_bg 0x0
 int drawable notify_panel_notification_icon_bg 0x0
 int drawable search_edittext_bg 0x0
 int drawable test_custom_background 0x0
+int drawable th 0x0
 int drawable tooltip_frame_dark 0x0
 int drawable tooltip_frame_light 0x0
 int drawable video 0x0
@@ -3552,6 +3558,10 @@ int[] styleable ViewStubCompat { 0x10100d0, 0x10100f3, 0x10100f2 }
 int styleable ViewStubCompat_android_id 0
 int styleable ViewStubCompat_android_inflatedId 1
 int styleable ViewStubCompat_android_layout 2
+int[] styleable radios_textitem { 0x0, 0x0, 0x0 }
+int styleable radios_textitem_bgColor 0
+int styleable radios_textitem_isHaveX 1
+int styleable radios_textitem_text 2
 int xml standalone_badge 0x0
 int xml standalone_badge_gravity_bottom_end 0x0
 int xml standalone_badge_gravity_bottom_start 0x0

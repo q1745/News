@@ -45,9 +45,10 @@ public class RetrofitFactory {
      * @return
      */
 
-    public synchronized static RetrofitFactory getMyRetrofit() {
 
 
+
+    public static synchronized RetrofitFactory getMyRetrofit() {
         if (myRetrofit == null) {
             synchronized (RetrofitFactory.class) {
                 if (myRetrofit == null) {

@@ -1,8 +1,11 @@
 package com.bw.news;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -32,8 +35,20 @@ public class MainActivity extends AppCompatActivity {
         initView();
         initBottomView();
 
+        clearBar();
 
 
+    }
+
+    /**
+     * 沉浸式
+     */
+    private void clearBar() {
+        if (Build.VERSION.SDK_INT >= 21){
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR|
+                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
     }
 
     /**
@@ -60,6 +75,66 @@ public class MainActivity extends AppCompatActivity {
         mainViewPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager(),
                 FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, fragments);
         mainVp.setAdapter(mainViewPagerAdapter);
+
+        mainVp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position){
+                    case 0:
+                        mainBottombar.selectTab(0);
+                        break;
+                    case 1:
+                        mainBottombar.selectTab(1);
+                        break;
+                    case 2:
+                        mainBottombar.selectTab(2);
+                        break;
+                    case 3:
+                        mainBottombar.selectTab(3);
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        mainBottombar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(int position) {
+                switch (position){
+                    case 0:
+                        mainVp.setCurrentItem(0);
+                        break;
+                    case 1:
+                        mainVp.setCurrentItem(1);
+                        break;
+                    case 2:
+                        mainVp.setCurrentItem(2);
+                        break;
+                    case 3:
+                        mainVp.setCurrentItem(3);
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(int position) {
+
+            }
+
+            @Override
+            public void onTabReselected(int position) {
+
+            }
+        });
     }
 
 
