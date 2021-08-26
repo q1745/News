@@ -1,7 +1,6 @@
 package com.shuke.login.model;
 
 import android.os.Looper;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -23,23 +22,10 @@ import com.shuke.mvvmcore.IModel;
  * @ClassName: RegModelImpl
  */
 public class LogModelImpl implements IModel {
-    public String log(LogEntity entity){
-        MutableLiveData<LogEntity> liveData = new MutableLiveData<>();
-        if (Looper.myLooper()!=Looper.getMainLooper()){
-            liveData.postValue(entity);
-        }else{
-            liveData.setValue(entity);
-        }
-        RetrofitFactory.getMyRetrofit()
+    public LiveData<BaseRespEntity<LogEntity>> log(LogEntity entity) {
+        return RetrofitFactory.getMyRetrofit()
                 .createRetrofit()
                 .create(RegisterApi.class)
-                .log(entity)
-                .observe(new LogMainActivity(), new Observer<BaseRespEntity<LogEntity>>() {
-                    @Override
-                    public void onChanged(BaseRespEntity<LogEntity> logEntityBaseRespEntity) {
-
-                    }
-                });
-        return "";
+                .log(entity);
     }
 }

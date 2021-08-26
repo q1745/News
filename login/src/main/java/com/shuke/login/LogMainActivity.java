@@ -28,6 +28,7 @@ public class LogMainActivity extends MVVMActivity<LogMain, LogViewModel> {
     @Override
     public Map<Integer, Object> initVarMap(Map<Integer, Object> vars) {
         vars.put(BR.datapage,viewModel);
+        vars.put(BR.mine,this);
         return vars;
     }
 
@@ -43,13 +44,22 @@ public class LogMainActivity extends MVVMActivity<LogMain, LogViewModel> {
 
     @Override
     public void loadData() {
-        binding.setSecond(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String log = viewModel.log(new LogEntity(0, "123963", "0099", "", ""));
-                Toast.makeText(LogMainActivity.this, ""+log, Toast.LENGTH_SHORT).show();
+//        binding.setSecond(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+    }
 
-                MutableLiveData<Object> objectMutableLiveData = new MutableLiveData<>();
+    public void doSomthing(View view){
+        String username = viewModel.pageSource.getValue().getUsername();
+        String pwd = viewModel.pageSource.getValue().getPwd();
+        viewModel.log(new LogEntity(0, username, pwd, "", ""))
+        .observe(this, new Observer<BaseRespEntity<LogEntity>>() {
+            @Override
+            public void onChanged(BaseRespEntity<LogEntity> logEntityBaseRespEntity) {
+
             }
         });
     }

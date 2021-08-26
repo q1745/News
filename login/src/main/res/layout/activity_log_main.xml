@@ -7,8 +7,8 @@
             name="datapage"
             type="com.shuke.login.viewmodel.LogViewModel" />
         <variable
-            name="second"
-            type="android.view.View.OnClickListener" />
+            name="mine"
+            type="com.shuke.login.LogMainActivity" />
     </data>
     <LinearLayout
         android:gravity="center"
@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
+                android:text="@={datapage.pageSource.username}"
                 android:hint="Username"
                 android:textColorHint="#FFFFFF"
                 android:layout_width="match_parent"
@@ -36,7 +37,7 @@
             <Button
                 android:background="@null"
                 android:text="登录"
-                android:onClick="@{second}"
+                android:onClick="@{(view)->mine.doSomthing(view)}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </Button>
