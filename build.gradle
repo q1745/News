@@ -33,8 +33,7 @@ appConfig {
             applicationId "com.bw.news"
             applicationName ".App"
             mainActivity ".MainActivity"
-            modules ':Login',
-                    ':Homepage',
+            modules ':Homepage',
                     ':VideoModel',
                     ':HeadLine',
                     ':Mine'
@@ -43,11 +42,10 @@ appConfig {
 
     modules {
 
+
         Login {
             name ":Login"
             applicationId "com.shuke.login"
-            applicationName ".App"
-            mainActivity ".MainActivity"
             isRunAlone true
         }
 
