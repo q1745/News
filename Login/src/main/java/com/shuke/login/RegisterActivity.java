@@ -1,5 +1,6 @@
 package com.shuke.login;
 
+
 import android.view.View;
 import android.widget.Toast;
 
@@ -7,12 +8,14 @@ import androidx.lifecycle.Observer;
 
 import com.bw.zz.RetrofitFactory;
 import com.bw.zz.protocol.BaseRespEntity;
+
 import com.shuke.login.api.RegisterApi;
 import com.shuke.login.databinding.LogMain;
 import com.shuke.login.databinding.RigMain;
 import com.shuke.login.pro.LogEntity;
 import com.shuke.login.pro.RegisterEntity;
 import com.shuke.login.viewmodel.LogViewModel;
+
 import com.shuke.login.viewmodel.RegViewModel;
 import com.shuke.mvvmcore.view.MVVMActivity;
 

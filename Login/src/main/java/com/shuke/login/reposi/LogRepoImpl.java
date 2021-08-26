@@ -1,7 +1,10 @@
 package com.shuke.login.reposi;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
+import com.bw.zz.protocol.BaseRespEntity;
 import com.shuke.login.model.LogModelImpl;
 import com.shuke.login.pro.LogEntity;
 import com.shuke.mvvmcore.BaseRepository;
@@ -18,7 +21,7 @@ import com.shuke.mvvmcore.annotation.Model;
 public class LogRepoImpl extends BaseRepository {
     @Model
     LogModelImpl logModel;
-    public LiveData<LogEntity> log(LogEntity entity){
+    public LiveData<BaseRespEntity<LogEntity>> log(LogEntity entity){
         return logModel.log(entity);
     }
 }

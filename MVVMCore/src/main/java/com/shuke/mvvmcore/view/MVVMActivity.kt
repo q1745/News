@@ -23,9 +23,11 @@ abstract class MVVMActivity<V : ViewDataBinding,VM : BaseViewModel<*>> : AppComp
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,getLayoutId())
+        binding.lifecycleOwner = this
+        viewModel = createViewModel()
         vars = initVarMap(vars)
         setVars(binding,vars)
-        viewModel = createViewModel()
+
         if(isClearBar()){
             clearBar()
         }

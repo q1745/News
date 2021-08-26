@@ -1,5 +1,7 @@
 package com.shuke.login;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
 import android.view.View;
@@ -25,6 +27,7 @@ public class LogMainActivity extends MVVMActivity<LogMain, LogViewModel> {
     @Override
     public Map<Integer, Object> initVarMap(Map<Integer, Object> vars) {
         vars.put(BR.datapage,viewModel);
+        vars.put(BR.mine,this);
         return vars;
     }
 
@@ -40,20 +43,22 @@ public class LogMainActivity extends MVVMActivity<LogMain, LogViewModel> {
 
     @Override
     public void loadData() {
-        binding.setSecond(new View.OnClickListener() {
+//        binding.setSecond(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+    }
+
+    public void doSomthing(View view){
+        String username = viewModel.pageSource.getValue().getUsername();
+        String pwd = viewModel.pageSource.getValue().getPwd();
+        viewModel.log(new LogEntity(0, username, pwd, "", ""))
+        .observe(this, new Observer<BaseRespEntity<LogEntity>>() {
             @Override
-            public void onClick(View v) {
-                viewModel.log(new LogEntity(0,"123963","0099","",""));
-                RetrofitFactory.getMyRetrofit()
-                        .createRetrofit()
-                        .create(RegisterApi.class)
-                        .log(new LogEntity(0,"123963","0099","",""))
-                        .observe(LogMainActivity.this, new Observer<BaseRespEntity<LogEntity>>() {
-                            @Override
-                            public void onChanged(BaseRespEntity<LogEntity> logEntityBaseRespEntity) {
-                                Toast.makeText(LogMainActivity.this, "跳转"+logEntityBaseRespEntity.getMsg(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+            public void onChanged(BaseRespEntity<LogEntity> logEntityBaseRespEntity) {
+
             }
         });
     }

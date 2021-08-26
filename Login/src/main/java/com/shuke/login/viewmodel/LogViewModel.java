@@ -5,8 +5,12 @@ import android.os.Looper;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
+
+import com.bw.zz.protocol.BaseRespEntity;
 import com.shuke.login.pro.LogEntity;
+
 import com.shuke.login.reposi.LogRepoImpl;
 import com.shuke.mvvmcore.BaseViewModel;
 
@@ -44,7 +48,8 @@ public class LogViewModel extends BaseViewModel<LogRepoImpl> {
     public void initResource() {
 
     }
-    public LiveData<LogEntity> log(LogEntity entity){
+    public LiveData<BaseRespEntity<LogEntity>> log(LogEntity entity){
+
         return repo.log(entity);
     }
 }

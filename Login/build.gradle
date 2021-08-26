@@ -38,7 +38,10 @@ dependencies {
     implementation project(path: ':Net')
     implementation project(path: ':MVVMCore')
     implementation project(path: ':Common')
+<<<<<<< HEAD:Login/build.gradle
     implementation project(path: ':Resources')
+=======
+>>>>>>> zhang:login/build.gradle
     implementation project(path: ':MVVMCore')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
