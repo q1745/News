@@ -1,5 +1,9 @@
 R_DEF: Internal format may change without notice
 local
+anim scale_style
+attr? bgColor
+attr? isHaveX
+attr? text
 color black
 color purple_200
 color purple_500
@@ -40,6 +44,7 @@ dimen text_size_title
 dimen title_height
 drawable camera_icon
 drawable delete
+drawable ic_action_name
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable index
@@ -54,3 +59,4 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
 style Theme.News
+styleable radios_textitem text bgColor isHaveX

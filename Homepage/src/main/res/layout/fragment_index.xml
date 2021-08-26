@@ -24,7 +24,7 @@
         <EditText
             android:id="@+id/index_search"
             android:hint="搜索你想要的"
-            android:drawableLeft="@drawable/find"
+            android:drawableLeft="@drawable/ic_action_name"
             android:background="@drawable/search_style"
             android:layout_marginLeft="30dp"
             android:layout_width="250dp"
