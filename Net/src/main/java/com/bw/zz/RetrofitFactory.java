@@ -31,11 +31,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitFactory {
 
-<<<<<<< HEAD
     private volatile static RetrofitFactory myRetrofit = null;
-=======
-    private static volatile RetrofitFactory myRetrofit = null;
->>>>>>> zhang
+
     private Retrofit retrofit;
 
     public RetrofitFactory() {
@@ -47,13 +44,10 @@ public class RetrofitFactory {
      * 双重锁成就单例
      * @return
      */
-<<<<<<< HEAD
 
     public synchronized static RetrofitFactory getMyRetrofit() {
 
-=======
-    public static synchronized RetrofitFactory getMyRetrofit() {
->>>>>>> zhang
+
         if (myRetrofit == null) {
             synchronized (RetrofitFactory.class) {
                 if (myRetrofit == null) {
@@ -69,18 +63,9 @@ public class RetrofitFactory {
      * @return
      */
     public Retrofit createRetrofit() {
-<<<<<<< HEAD
          Retrofit retro = new Retrofit.Builder()
                 .baseUrl("http://39.98.153.96:8080/")
                  .client(createHttpClient())
-=======
-        return new Retrofit.Builder()
-<<<<<<< HEAD
-                .baseUrl("http://39.98.153.96:8080/Help/")
->>>>>>> zhang
-=======
-                .baseUrl("http://39.98.153.96:8080/")
->>>>>>> dev
                 .addConverterFactory(GsonConverterFactory.create())
                 .addConverterFactory(CustomGsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

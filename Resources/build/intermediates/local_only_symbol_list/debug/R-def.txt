@@ -42,9 +42,13 @@ drawable camera_icon
 drawable delete
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable index
 drawable lajitong
 drawable magnifying_icon
+drawable mine
+drawable more
 drawable search_edittext_bg
+drawable video
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
