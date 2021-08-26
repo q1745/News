@@ -3,6 +3,7 @@ package com.shuke.login;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -47,14 +48,17 @@ public class MainActivity extends MVVMActivity<ActivityMainBinding, RegViewModel
         binding.setSpot(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                viewModel.pageSource.getValue()
                 RetrofitFactory.getMyRetrofit()
                         .createRetrofit()
                         .create(RegisterApi.class)
-                        .regis(viewModel.pageSource.getValue())
+                        .regis(new RegisterEntity(1,"789789789789","0099","",""))
                         .observe(MainActivity.this, new Observer<BaseRespEntity<RegisterEntity>>() {
                             @Override
                             public void onChanged(BaseRespEntity<RegisterEntity> registerEntityBaseRespEntity) {
-                                Toast.makeText(MainActivity.this, ""+registerEntityBaseRespEntity.getMsg(), Toast.LENGTH_SHORT).show();
+                                if (registerEntityBaseRespEntity.getMsg().equals("操作成功")){
+                                    startActivity(new Intent(MainActivity.this,LogMainActivity.class));
+                                }
                             }
                         });
             }
