@@ -85,21 +85,6 @@ public class IndexFragment extends Fragment {
             }
         });
 
-
-//        indexSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View view, boolean b) {
-//                if (b) {
-//
-//                } else {
-//
-//                }
-//
-//            }
-//        });
-
-
-
         fragments.add(new NewsFragment());
         fragments.add(new ElseFragment());
         //接收选中的兴趣
