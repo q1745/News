@@ -1,6 +1,8 @@
 plugins {
     id 'calces.modules'
 }
+
+
 def configs = rootProject.ext.dependenciesConfig
 android {
     compileSdkVersion 30
@@ -17,6 +19,12 @@ android {
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -48,4 +56,6 @@ dependencies {
     //依赖超过65536
     implementation configs.multidex
     implementation configs.BottomBar
+    annotationProcessor  'com.alibaba:arouter-compiler:1.5.2'
+
 }

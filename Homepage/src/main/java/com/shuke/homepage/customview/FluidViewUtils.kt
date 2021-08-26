@@ -23,12 +23,7 @@ object FluidViewUtils {
             itemtext.item = it
             fluidView.addChildView(itemtext)
         }
-        fluidView.setChildViewClickLisenter(object : ChildViewClickLisenter {
-            override fun onClick(view: View) {
-                fluidView.removeChildView(view)
-                del(view,context)
-            }
-        })
+        fluidView.setchildLisenter()
     }
 
     fun InsertView(fluidView: FluidView, entity: SearchHistoryEntity, context: Context){

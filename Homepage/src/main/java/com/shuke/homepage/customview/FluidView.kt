@@ -99,20 +99,15 @@ class FluidView : ViewGroup{
         }
     }
 
-    private var childViewClickLisenter: ChildViewClickLisenter? = null
 
-    fun setChildViewClickLisenter(_childViewClickLisenter: ChildViewClickLisenter){
-        childViewClickLisenter = _childViewClickLisenter
-        setchildLisenter()
-    }
 
-    private fun setchildLisenter() {
+    fun setchildLisenter() {
         Log.i("TAG", "setchildLisenter: "+childCount)
         for (i in 1..childCount){
             val childAt : TextItem = this.getChildAt(i - 1) as TextItem
             childAt.setChildViewLisenter(object : ChildViewLisenter{
                 override fun onDel(view: View) {
-                    childViewClickLisenter!!.onClick(view)
+                    removeChildView(view)
                 }
             })
         }
