@@ -1,5 +1,7 @@
 package com.shuke.login;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
 import android.util.Log;
@@ -44,17 +46,10 @@ public class LogMainActivity extends MVVMActivity<LogMain, LogViewModel> {
         binding.setSecond(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.log(new LogEntity(0,"123963","0099","",""));
-                RetrofitFactory.getMyRetrofit()
-                        .createRetrofit()
-                        .create(RegisterApi.class)
-                        .log(new LogEntity(0,"123963","0099","",""))
-                        .observe(LogMainActivity.this, new Observer<BaseRespEntity<LogEntity>>() {
-                            @Override
-                            public void onChanged(BaseRespEntity<LogEntity> logEntityBaseRespEntity) {
-                                Toast.makeText(LogMainActivity.this, "跳转"+logEntityBaseRespEntity.getMsg(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                String log = viewModel.log(new LogEntity(0, "123963", "0099", "", ""));
+                Toast.makeText(LogMainActivity.this, ""+log, Toast.LENGTH_SHORT).show();
+
+                MutableLiveData<Object> objectMutableLiveData = new MutableLiveData<>();
             }
         });
     }

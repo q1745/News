@@ -18,7 +18,7 @@ import com.shuke.mvvmcore.annotation.Model;
 public class LogRepoImpl extends BaseRepository {
     @Model
     LogModelImpl logModel;
-    public LiveData<LogEntity> log(LogEntity entity){
+    public String log(LogEntity entity){
         return logModel.log(entity);
     }
 }

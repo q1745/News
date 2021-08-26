@@ -44,7 +44,7 @@ public class LogViewModel extends BaseViewModel<LogRepoImpl> {
     public void initResource() {
 
     }
-    public LiveData<LogEntity> log(LogEntity entity){
+    public String log(LogEntity entity){
         return repo.log(entity);
     }
 }

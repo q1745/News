@@ -72,4 +72,15 @@ public class LogEntity extends BaseObservable {
         this.sex = sex;
         this.birthday = birthday;
     }
+
+    @Override
+    public String toString() {
+        return "LogEntity{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", sex='" + sex + '\'' +
+                ", birthday='" + birthday + '\'' +
+                '}';
+    }
 }
