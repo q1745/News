@@ -2,6 +2,8 @@ plugins {
     id 'com.android.library'
 }
 
+def urls = rootProject.ext.urls
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -18,8 +20,13 @@ android {
 
     buildTypes {
         release {
+            buildConfigField("String","BASEURL","\"" + urls.online + "\"")
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            buildConfigField("String","BASEURL","\"" + urls.offline + "\"")
         }
     }
     compileOptions {
@@ -42,4 +49,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
     //线程异常任务调度
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
+
+//Retrofit依赖
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
 }

@@ -7,6 +7,8 @@
     tools:context=".fragment.IndexFragment">
 
     <LinearLayout
+        android:focusableInTouchMode="true"
+        android:focusable="true"
         android:background="#BC0909"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
@@ -23,6 +25,7 @@
 
         <EditText
             android:id="@+id/index_search"
+            android:singleLine="true"
             android:hint="搜索你想要的"
             android:drawableLeft="@drawable/find"
             android:background="@drawable/search_style"
@@ -43,7 +46,6 @@
         app:tabMode="scrollable"
         android:id="@+id/index_tab"
         app:tabIndicator="@null"
-        app:tabSelectedTextColor="#BC0909"
         android:layout_marginTop="56dp"
         android:layout_width="match_parent"
         android:layout_marginRight="50dp"

@@ -10,5 +10,4 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.News">
     </application>
-
 </manifest>
