@@ -1,7 +1,6 @@
 package com.shuke.login;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+
+import androidx.lifecycle.Observer;
+
 import com.bw.zz.RetrofitFactory;
 import com.bw.zz.protocol.BaseRespEntity;
-import com.shuke.common.LogUtil;
 import com.shuke.login.databinding.ActivityMainBinding;
 import com.shuke.login.model.api.RegisterApi;
 import com.shuke.login.model.pro.RegisterEntity;
