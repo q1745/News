@@ -11,9 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.News">
-        <activity android:name=".guide.view.NewsTypeActivity"/>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".search.view.SearchActivity"/>
+
     </application>
 
 </manifest>

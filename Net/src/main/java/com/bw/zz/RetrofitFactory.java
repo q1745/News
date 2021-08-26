@@ -3,6 +3,7 @@ package com.bw.zz;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.bw.net.BuildConfig;
 import com.bw.zz.api.TokenApi;
 import com.bw.zz.common.Config;
 import com.bw.zz.protocol.TokenRespEntity;
@@ -31,6 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitFactory {
 
+
     private volatile static RetrofitFactory myRetrofit = null;
     private Retrofit retrofit;
 
@@ -43,7 +45,6 @@ public class RetrofitFactory {
      * 双重锁成就单例
      * @return
      */
-
     public synchronized static RetrofitFactory getMyRetrofit() {
 
         if (myRetrofit == null) {
@@ -62,8 +63,8 @@ public class RetrofitFactory {
      */
     public Retrofit createRetrofit() {
          Retrofit retro = new Retrofit.Builder()
-                .baseUrl("http://39.98.153.96:8080/")
-                 .client(createHttpClient())
+                .baseUrl(BuildConfig.BASEURL)
+                .client(createHttpClient())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addConverterFactory(CustomGsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

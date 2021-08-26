@@ -26,7 +26,7 @@ plugins {
 
 appConfig {
     //开关
-    debugEnable true
+    debugEnable false
     apps {
         app {
             name ":app"
@@ -46,6 +46,7 @@ appConfig {
         Login {
             name ":Login"
             applicationId "com.shuke.login"
+            applicationName ".App"
             mainActivity ".MainActivity"
             isRunAlone false
         }
@@ -53,7 +54,6 @@ appConfig {
         Homepage {
             name ":Homepage"
             applicationId "com.shuke.homepage"
-
             mainActivity ".guide.view.NewsTypeActivity"
             isRunAlone true
         }
@@ -61,7 +61,6 @@ appConfig {
         VideoModel {
             name ":VideoModel"
             applicationId "com.shuke.videomodel"
-
             mainActivity ".MainActivity"
             isRunAlone false
         }
@@ -69,7 +68,6 @@ appConfig {
         HeadLine {
             name ":HeadLine"
             applicationId "com.bw.headline"
-
             mainActivity ".MainActivity"
             isRunAlone false
         }
@@ -77,7 +75,6 @@ appConfig {
         Mine {
             name ":Mine"
             applicationId "com.bw.mine"
-
             mainActivity ".MainActivity"
             isRunAlone false
         }
