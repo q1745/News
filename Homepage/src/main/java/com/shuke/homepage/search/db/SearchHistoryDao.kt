@@ -20,4 +20,5 @@ interface SearchHistoryDao {
 
     @Delete(entity = SearchHistoryEntity::class)
     fun delOne(entity: SearchHistoryEntity)
+
 }

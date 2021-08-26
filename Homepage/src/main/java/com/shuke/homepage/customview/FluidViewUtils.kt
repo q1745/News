@@ -8,6 +8,7 @@ import com.shuke.common.ThreadUtil
 import com.shuke.homepage.search.db.SearchDBUtils
 import com.shuke.homepage.search.db.SearchHistoryEntity
 import kotlinx.android.synthetic.main.search_activity_layout.*
+import java.lang.ref.WeakReference
 
 /**
  *   @Author:YaPeng
@@ -17,22 +18,19 @@ import kotlinx.android.synthetic.main.search_activity_layout.*
 object FluidViewUtils {
 
     fun Adaptive(fluidView: FluidView, entitys: MutableList<SearchHistoryEntity>, context: Context){
+        val weakContext : WeakReference<Context> = WeakReference(context)
         entitys.forEach {
-            var itemtext:TextItem = TextItem(context)
+            var itemtext:TextItem = TextItem(weakContext.get())
             itemtext.setT(it.name.toString())
             itemtext.item = it
             fluidView.addChildView(itemtext)
         }
-        fluidView.setChildViewClickLisenter(object : ChildViewClickLisenter {
-            override fun onClick(view: View) {
-                fluidView.removeChildView(view)
-                del(view,context)
-            }
-        })
+        fluidView.setchildLisenter()
     }
 
     fun InsertView(fluidView: FluidView, entity: SearchHistoryEntity, context: Context){
-        var itemtext:TextItem = TextItem(context)
+        val weakContext : WeakReference<Context> = WeakReference(context)
+        var itemtext:TextItem = TextItem(weakContext.get())
         itemtext.setT(entity.name.toString())
         itemtext.item = entity
         fluidView.addChildView(itemtext)
@@ -44,17 +42,20 @@ object FluidViewUtils {
         })
         ThreadUtil.doTaskAsync(object : Runnable{
             override fun run() {
-                SearchDBUtils.getSearchDB(context).searchHistoryDao().insertEntity(entity)
+                weakContext.get()?.let { SearchDBUtils.getSearchDB(it).searchHistoryDao().insertEntity(entity) }
             }
         })
     }
 
 
     fun del(view:View,context: Context){
+        val weakContext : WeakReference<Context> = WeakReference(context)
         ThreadUtil.doTaskAsync(object : Runnable{
             override fun run() {
-                SearchDBUtils.getSearchDB(context).searchHistoryDao().delOne((view as TextItem).item)
+                weakContext.get()?.let { SearchDBUtils.getSearchDB(it).searchHistoryDao().delOne((view as TextItem).item) }
             }
         })
     }
+
+
 }

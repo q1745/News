@@ -20,8 +20,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.ScaleAnimation;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.google.android.material.tabs.TabLayout;
 import com.shuke.homepage.R;
 import com.shuke.homepage.adapter.MainVpAdapter;
@@ -40,6 +42,7 @@ import java.util.List;
 public class IndexFragment extends Fragment {
 
     TabLayout tab;
+    EditText search;
     ViewPager vp;
     List<Fragment> fragments = new ArrayList<>();
 
@@ -52,6 +55,14 @@ public class IndexFragment extends Fragment {
 
         tab = inflate.findViewById(R.id.index_tab);
         vp = inflate.findViewById(R.id.index_vp);
+        search = inflate.findViewById(R.id.index_search);
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/homepage/searchActivity").navigation();
+            }
+        });
 
         fragments.add(new NewsFragment());
 
